@@ -47,10 +47,9 @@ footer{text-align:center;padding:40px;font-size:12px;color:#888;}
 </section>
 
 <section class="filter" id="portfolio">
-<button onclick="filterWorks('all')">All</button>
-<button onclick="filterWorks('editorial')">Editorial</button>
-<button onclick="filterWorks('beauty')">Beauty</button>
-<button onclick="filterWorks('commercial')">Commercial</button>
+<button onclick="filterWorks('mh')">M＆H</button>
+<button onclick="filterWorks('editorial')">Makeup</button>
+<button onclick="filterWorks('beauty')">Hair</button>
 </section>
 
 <section class="gallery" id="gallery"></section>
@@ -80,8 +79,10 @@ Available for editorial, commercial and creative collaborations.
 <script>
 // 這裡是作品圖片資料
 const works = [
-  {img:"images/img1.JPG", category:"editorial"},
-  {img:"images/img2.JPG", category:"beauty"}
+  {img:"images/img1.JPG", category:"editorial"},  // Makeup 類別
+  {img:"images/img2.JPG", category:"editorial"},  // Makeup 類別
+  {img:"images/img3.JPG", category:"mh"},        // M＆H 類別
+  {img:"images/img4.JPG", category:"mh"}         // M＆H 類別
 ];
 
 // 顯示作品的函數
