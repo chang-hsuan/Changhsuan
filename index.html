@@ -55,13 +55,13 @@ nav a {
 .filter button {
   margin-right: 20px;
   background: none;
-  border: 1px solid #111;
-  color: #111;
+  color: #111; /* 設定為黑色文字 */
   cursor: pointer;
   font-size: 13px;
   letter-spacing: 1px;
   padding: 8px 20px;
   text-transform: uppercase;
+  border: none; /* 移除邊框 */
 }
 .filter button:hover, .filter button:focus, .filter button:active {
   background-color: #f1f1f1;
@@ -264,4 +264,11 @@ function changeImage(direction){
 
 // 關閉大圖檢視
 function closeLightbox(){
-  document.getElementById("lightbox
+  document.getElementById("lightbox").style.display = "none";
+}
+
+displayWorks();  // 頁面載入時顯示所有作品
+</script>
+
+</body>
+</html>
