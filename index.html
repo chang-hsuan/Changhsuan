@@ -27,6 +27,9 @@ nav a{margin-left:30px;text-decoration:none;color:#111;font-size:13px;letter-spa
 footer{text-align:center;padding:40px;font-size:12px;color:#888;}
 .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000;}
 .lightbox img{max-width:90%;max-height:90%;}
+.lightbox .nav-arrow{position:absolute;top:50%;color:#fff;font-size:30px;cursor:pointer;z-index:1100;}
+.lightbox .nav-left{left:10px;}
+.lightbox .nav-right{right:10px;}
 </style>
 </head>
 
@@ -73,7 +76,9 @@ Available for editorial, commercial and creative collaborations.
 </footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-<img id="lightbox-img">
+  <span class="nav-arrow nav-left" onclick="changeImage('prev')">&#10094;</span>
+  <img id="lightbox-img" src="">
+  <span class="nav-arrow nav-right" onclick="changeImage('next')">&#10095;</span>
 </div>
 
 <script>
@@ -105,9 +110,24 @@ function filterWorks(type){
 }
 
 // 開啟大圖檢視
+let currentIndex = 0; // 用來記錄當前顯示的圖片
 function openLightbox(src){
+  const galleryImgs = works.filter(work => work.category === 'mh');
+  currentIndex = galleryImgs.findIndex(work => work.img === src);
+  
   document.getElementById("lightbox").style.display = "flex";
   document.getElementById("lightbox-img").src = src;
+}
+
+// 切換圖片的函數
+function changeImage(direction){
+  const galleryImgs = works.filter(work => work.category === 'mh');
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % galleryImgs.length; // 往右滑動，循環回到第一張
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + galleryImgs.length) % galleryImgs.length; // 往左滑動，循環回到最後一張
+  }
+  document.getElementById("lightbox-img").src = galleryImgs[currentIndex].img;
 }
 
 // 關閉大圖檢視
